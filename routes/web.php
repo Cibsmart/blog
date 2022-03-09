@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//Home Route
 Route::get('/', function(){
     return view('blogs');
 });
@@ -21,8 +21,6 @@ Route::get('/', function(){
 Route::get('blog', function () {
     return view ('blog');
 });
-
-
 
 
 
