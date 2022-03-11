@@ -18,6 +18,7 @@ Route::get('/', function(){
     return view('blogs');
 });
 
+//Blog Route
 Route::get('blog', function () {
     return view ('blog');
 });
