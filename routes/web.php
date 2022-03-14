@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 //Home Route
 Route::get('/', function(){
-    return view('blogs');
+    $posts = Blog::all();
+    
+    return view('blogs', ['posts' => $posts]);
 });
 
 //Blog Route
