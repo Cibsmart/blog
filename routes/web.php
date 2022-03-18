@@ -16,14 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 //Home Route
 Route::get('/', function(){
-    $posts = Blog::all();
+    $posts = Blog::get();
     
     return view('blogs', ['posts' => $posts]);
 });
 
 //Blog Route
-Route::get('blog', function () {
-    return view ('blog');
+Route::get('blog/{post:slug}', function (Blog $post) {
+
+    return view('blog', ['post' => $post]);
 });
 
 
