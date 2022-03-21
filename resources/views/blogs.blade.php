@@ -7,6 +7,7 @@
     <title>Blog</title>
 </head>
 <body>
+    <a href="/blog/create">Create Post</a>
 
     @foreach($posts as $post)
         <article>
