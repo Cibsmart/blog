@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->string('slug')->after('id');
+            $table->string('slug')->nullable()->after('id');
             $table->string('excerpt')->after('title');
         });
     }

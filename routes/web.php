@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 //Home Route
 Route::get('/', function(){
-    $posts = Blog::get();
+    $posts = Blog::latest()->get();
     
     return view('blogs', ['posts' => $posts]);
 });
@@ -39,6 +39,10 @@ Route::post('blog/store', function (Request $request) {
     // $post->body = $request->body;
 
     // $post->save();
+
+    $request->validate([
+        'slug' => ['required']
+    ]);
 
     Blog::create([
         'slug' => $request->slug,

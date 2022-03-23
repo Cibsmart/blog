@@ -8,12 +8,16 @@
 </head>
 <body>
     <h1>Create Blog Posts</h1>
+    
     <form action="/blog/store" method="POST">
         @csrf
 
         <div>
             <label for="slug">Slug:</label>
-            <input type="text" name="slug" id="slug">
+            <input type="text" name="slug" id="slug" required>
+            @error('slug')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
