@@ -41,7 +41,10 @@ Route::post('blog/store', function (Request $request) {
     // $post->save();
 
     $request->validate([
-        'slug' => ['required'],
+        'slug' => ['required', 'max:255'],
+        'title' => ['required'],
+        'excerpt' => ['required'],
+        'body' => ['required'],
     ]);
 
     Blog::create([

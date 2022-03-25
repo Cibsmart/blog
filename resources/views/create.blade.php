@@ -12,27 +12,46 @@
     <form action="/blog/store" method="POST">
         @csrf
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div>
             <label for="slug">Slug:</label>
-            <input type="text" name="slug" id="slug" required>
-            @error('slug')
+            <input type="text" name="slug" id="slug">
+            <!-- @error('slug')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            @enderror -->
         </div>
 
         <div>
             <label for="title">Title:</label>
             <input type="text" name="title" id="title">
+            <!-- @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror -->
         </div>
 
         <div>
             <label for="excerpt">Excerpt:</label>
             <input type="text" name="excerpt" id="excerpt">
+            <!-- @error('excerpt')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror -->
         </div>
 
         <div>
             <label for="body">Body:</label>
             <textarea name="body" id="body" cols="50" rows="5"></textarea>
+            <!-- @error('body')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror -->
         </div>
 
         <button type="submit">Create</button>
