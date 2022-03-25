@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,20 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Home Route
-Route::get('/', function(){
-    $posts = Blog::latest()->get();
-    
-    return view('blogs', ['posts' => $posts]);
-});
+//Home Route - index method
+Route::get('/', [BlogController::class, 'index']);
 
-//Create Blog
-Route::get('blog/create', function () {
+//Create Blog - create method
+Route::get('blog/create', [BlogController::class, 'create']);
 
-    return view('create');
-});
-
-//Submit New Blog
+//Submit New Blog - store method
 Route::post('blog/store', function (Request $request) {
 
     // $post = new Blog;
@@ -58,7 +52,7 @@ Route::post('blog/store', function (Request $request) {
 
 });
 
-//Blog Route
+//Blog Route - show method
 Route::get('blog/{post:slug}', function (Blog $post) {
 
     return view('blog', ['post' => $post]);
