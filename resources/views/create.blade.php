@@ -22,17 +22,17 @@
             </div>
         @endif
 
-        <div>
+        <!-- <div>
             <label for="slug">Slug:</label>
             <input type="text" name="slug" id="slug">
-            <!-- @error('slug')
+            @error('slug')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror -->
-        </div>
+            @enderror
+        </div> -->
 
         <div>
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="{{ old('title') }}" >
             <!-- @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror -->
@@ -40,7 +40,7 @@
 
         <div>
             <label for="excerpt">Excerpt:</label>
-            <input type="text" name="excerpt" id="excerpt">
+            <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt') }}" >
             <!-- @error('excerpt')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror -->
@@ -48,7 +48,7 @@
 
         <div>
             <label for="body">Body:</label>
-            <textarea name="body" id="body" cols="50" rows="5"></textarea>
+            <textarea name="body" id="body" cols="50" rows="5">{{ old('body') }}</textarea>
             <!-- @error('body')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror -->

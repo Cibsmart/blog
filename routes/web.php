@@ -23,40 +23,10 @@ Route::get('/', [BlogController::class, 'index']);
 Route::get('blog/create', [BlogController::class, 'create']);
 
 //Submit New Blog - store method
-Route::post('blog/store', function (Request $request) {
-
-    // $post = new Blog;
-
-    // $post->slug = $request->slug;
-    // $post->title = $request->title;
-    // $post->excerpt = $request->excerpt;
-    // $post->body = $request->body;
-
-    // $post->save();
-
-    $request->validate([
-        'slug' => ['required', 'max:255'],
-        'title' => ['required'],
-        'excerpt' => ['required'],
-        'body' => ['required'],
-    ]);
-
-    Blog::create([
-        'slug' => $request->slug,
-        'title' => $request->title,
-        'excerpt' => $request->excerpt,
-        'body' => $request->body,
-    ]);
-
-    return redirect()->to('/');
-
-});
+Route::post('blog/store', [BlogController::class, 'store']);
 
 //Blog Route - show method
-Route::get('blog/{post:slug}', function (Blog $post) {
-
-    return view('blog', ['post' => $post]);
-});
+Route::get('blog/{post:slug}', [BlogController::class, 'show']);
 
 
 
