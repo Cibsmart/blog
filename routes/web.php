@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BlogController::class, 'index']);
 
 //Create Blog - create method
-Route::get('blog/create', [BlogController::class, 'create']);
+Route::get('blog/create', [BlogController::class, 'create'])->middleware('auth');
 
 //Submit New Blog - store method
-Route::post('blog/store', [BlogController::class, 'store']);
+Route::post('blog/store', [BlogController::class, 'store'])->middleware('auth');
 
 //Blog Route - show method
 Route::get('blog/{post:slug}', [BlogController::class, 'show']);

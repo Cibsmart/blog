@@ -10,14 +10,12 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug', 'title', 'excerpt', 'body'];
+    protected $fillable = ['author_id', 'slug', 'title', 'excerpt', 'body'];
 
 
-    // protected function slug() : Attribute
-    // {
-    //     return Attribute::make(
-    //         set: fn ($value, $attributes) => str($attributes['title'])->slug(),
-    //     );
-    // }
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 
 }

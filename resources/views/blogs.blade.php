@@ -7,11 +7,14 @@
     <title>Blog</title>
 </head>
 <body>
-    <a href="/blog/create">Create Post</a>
+    @auth
+        <a href="/blog/create">Create Post</a>
+    @endauth
 
     @foreach($posts as $post)
         <article>
             <h1><a href="/blog/{{ $post->slug }}">{{ $post->title }}</a></h1>
+            <span>Author: {{ $post->author->name }}</span>
             <p>{{ $post->excerpt }}</p>    
         </article>
     @endforeach

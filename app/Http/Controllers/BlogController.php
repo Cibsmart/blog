@@ -15,13 +15,15 @@ class BlogController extends Controller
         return view('blogs', ['posts' => $posts]);
     }
 
+
     public function create() {
 
         return view('create');
     }
 
+
     public function store(Request $request) {
-    
+
         $request->validate([
             'title' => ['required', 'unique:blogs,title'],
             'excerpt' => ['required'],
@@ -29,8 +31,11 @@ class BlogController extends Controller
         ]);
 
         $slug = str($request->title)->slug();
+
+        
     
         Blog::create([
+            'author_id' => auth()->id(),
             'slug' => $slug,
             'title' => $request->title,
             'excerpt' => $request->excerpt,
@@ -39,6 +44,7 @@ class BlogController extends Controller
     
         return redirect()->to('/');
     }
+
 
     public function show(Blog $post) {
 

@@ -9,6 +9,7 @@
 <body>
     <article>
         <h1>{{ $post->title }}</h1>
+        <span>Author: {{ $post->author->name }}</span>
         <p>{{ $post->body }}</p>    
     </article>
 
