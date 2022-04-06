@@ -10,7 +10,7 @@
     <article>
         <h1>{{ $post->title }}</h1>
         <span>Author: {{ $post->author->name }}</span>
-        <p>{{ $post->body }}</p>    
+        <p>{!! $post->body !!}</p>    
     </article>
 
     <a href="/">Go Back</a>

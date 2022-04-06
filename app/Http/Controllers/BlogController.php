@@ -12,13 +12,13 @@ class BlogController extends Controller
 
         $posts = Blog::latest()->get();
         
-        return view('blogs', ['posts' => $posts]);
+        return view('blog.index', ['posts' => $posts]);
     }
 
 
     public function create() {
 
-        return view('create');
+        return view('blog.create');
     }
 
 
@@ -31,8 +31,6 @@ class BlogController extends Controller
         ]);
 
         $slug = str($request->title)->slug();
-
-        
     
         Blog::create([
             'author_id' => auth()->id(),
@@ -48,6 +46,6 @@ class BlogController extends Controller
 
     public function show(Blog $post) {
 
-        return view('blog', ['post' => $post]);
+        return view('blog.show', ['post' => $post]);
     }
 }
