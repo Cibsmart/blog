@@ -6,17 +6,21 @@
         Blog Posts
     </x-slot>
 
-    <div class="mx-auto max-w-lg">
+    <div class="max-w-3xl mx-auto bg-white p-8">
         @auth
             <a href="/blog/create">Create Post</a>
         @endauth
 
+        <div class="space-y-5">
         @foreach($posts as $post)
-            <article>
-                <h1><a href="/blog/{{ $post->slug }}">{{ $post->title }}</a></h1>
-                <span>Author: {{ $post->author->name }}</span>
+            <article class="border rounded p-4">
+                <h1 class="font-black text-2xl hover:text-blue-400">
+                    <a href="/blog/{{ $post->slug }}">{{ $post->title }}</a>
+                </h1>
+                <span class="text-xs font-bold text-gray-500">By: {{ $post->author->name }}</span>
                 <p>{{ $post->excerpt }}</p>    
             </article>
         @endforeach
+        </div>
     </div>
 </x-app-layout>
