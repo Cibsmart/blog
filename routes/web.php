@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Home Route - index method
-Route::get('/', [BlogController::class, 'index']);
+Route::get('/', [BlogController::class, 'index'])->name('home');
 
 //Create Blog - create method
 Route::get('blog/create', [BlogController::class, 'create'])->middleware('auth');

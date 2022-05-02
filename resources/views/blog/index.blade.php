@@ -17,7 +17,11 @@
                 <h1 class="font-black text-2xl hover:text-blue-400">
                     <a href="/blog/{{ $post->slug }}">{{ $post->title }}</a>
                 </h1>
-                <span class="text-xs font-bold text-gray-500">By: {{ $post->author->name }}</span>
+
+                <span class="text-xs font-bold text-gray-500">
+                    By: <a href="/?author={{ $post->author->id }}">{{ $post->author->name }}</a>
+                </span>
+
                 <p>{{ $post->excerpt }}</p>    
             </article>
         @endforeach

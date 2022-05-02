@@ -3,14 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     
-    public function index(){
+    public function index(Request $request){
 
-        $posts = Blog::latest()->paginate(5);
+        $author_id = $request->query('author');
+
+        $posts = Blog::query();
+
+        if ($author_id) {
+            $author = User::findOrFail($author_id);
+
+            $posts = $author->posts();
+        }
+
+        $posts = $posts->latest()->paginate(5)->withQueryString();
         
         return view('blog.index', ['posts' => $posts]);
     }
