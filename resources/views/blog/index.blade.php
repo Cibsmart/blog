@@ -8,7 +8,7 @@
 
     <div class="max-w-3xl mx-auto bg-white p-8">
         @auth
-            <a href="/blog/create">Create Post</a>
+            <a href="/blog/create" class="bg-green-800 p-2 rounded-lg mb-4 block max-w-xs">Create Post</a>
         @endauth
 
         <div class="space-y-5">

@@ -54,6 +54,15 @@
             @enderror -->
         </div>
 
+        <div class="flex">
+            @foreach($tags as $id => $name)
+                <div>
+                    <input type="checkbox" id="{{ $id }}" name="tags[]" value="{{ $id }}" />
+                    <label for="{{ $id }}">{{ $name }}</label>
+                </div>
+            @endforeach
+        </div>
+
         <button type="submit">Create</button>
     </form>
 </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,9 @@ class BlogController extends Controller
 
     public function create() {
 
-        return view('blog.create');
+        $tags = Tag::all()->pluck('name', 'id');
+        
+        return view('blog.create', ['tags' => $tags]);
     }
 
 
@@ -39,17 +42,20 @@ class BlogController extends Controller
             'title' => ['required', 'unique:blogs,title'],
             'excerpt' => ['required'],
             'body' => ['required'],
+            'tags' => ['required']
         ]);
 
         $slug = str($request->title)->slug();
     
-        Blog::create([
+        $blog = Blog::create([
             'author_id' => auth()->id(),
             'slug' => $slug,
             'title' => $request->title,
             'excerpt' => $request->excerpt,
             'body' => $request->body,
         ]);
+
+        $blog->tags()->attach($request->tags);
     
         return redirect()->to('/');
     }
